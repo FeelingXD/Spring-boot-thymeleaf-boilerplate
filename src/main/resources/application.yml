@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/test?useSSL=false # 사용할 db 주소 기본적으로 로컬호스트 3306으로 잡아두었음
+    driver-class-name: org.mariadb.jdbc.Driver #사용할 db 클래스
+    username: root # db connector id
+    password: 12345678 # db connector password
+
+  jpa:
+    hibernate:
+      ddl-auto: create # ddl 설정
+    properties:
+      hibernate:
+        format_sql: true # sql 보기
+        dialect: org.hibernate.dialect.MariaDBDialect
+  # thymeleaf 경로
+  thymeleaf:
+    enable: true
+    prefix: classpath:/templates/ # 타임리프 경로
+    suffix: .html
+    
+  mvc:
+    hiddenmethod: # thymeleaf form method update, delete 사용을 위해 추가
+      filter:
+        enable: true
+logging:
+  level:
+    com.zaxxer.hikari: TRACE
+    com.zaxxer.hikari.HikariConfig: DEBUG
